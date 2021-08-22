@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>William Kenzie</title>
+      <link rel="stylesheet" href="assets/style.css">
+      </link>
+   </head>
+   <body>
+      <section class="blue">
+         <div style="float:left; max-width:60%">
+            <h1>Meet William Kenzie</h1>
+            <p>Security and Privacy writer by day - React web app designer by night 🍵</p>
+            <p><a href="./projects">Projects</a> &centerdot; <a href="./achievements">Achievements</a> &centerdot; <a href="https://github.com/willkenzie">Github</a></p>
+         </div>
+         <img src="assets/me.png" alt="William Kenzie">
+      </section>
+      <svg class="separator" width="100%" height="120" viewBox="0.1 0.1 180 40" preserveAspectRatio="none" style="z-index:2; position:absolute;">
+         <g transform="translate(-18.298844,-77.973964)">
+            <path style="fill:#2a52be;" d="M 31.615583,86.351641 H 192.16499 v 26.901969 c 0,0 -32.03411,-14.237983 -59.62682,-12.72484 -22.34188,1.2252 -54.779359,9.72634 -54.779359,9.72634 0,0 -22.029534,3.62882 -34.471238,-1.88988 -12.441702,-5.51871 -11.67199,-22.013589 -11.67199,-22.013589 z" />
+            <path style="fill:#2a52be;" d="M 18.441597,78.106256 H 198.58126 v 39.288614 c 0,0 -43.10672,-27.825245 -73.47599,-19.687823 -30.369264,8.137423 -46.832208,12.548653 -46.832208,12.548653 0,0 -32.775418,8.05972 -46.735258,0 C 17.577964,102.19598 18.441597,78.106256 18.441597,78.106256 Z" />
+         </g>
+      </svg>
+      <section>
+         <h2>Web Desinger</h2>
+         <p>An ideal web stack consists of React with Next.js, blended with some beautiful Material components, finished with a Supabase backend for simple web app development, or, if you fancy, direct integration to your favorite social media website - where your preferred posts can be displayed on your site in a professional and elegant matter.</p>
+      </section>
+      <section class="bubble ">
+         <h2>Design Principal</h2>
+         <p>The more modular your code is, the less time you'll spend debugging.</p>
+      </section>
+      <section class="dark">
+         <h2>Security and Privacy Analyst</h2>
+         <p>William's security standard, Knoxx, relies on server security with Linux. The security tips don't end there though; he writes articles about some of the best security tips for your online accounts and the ideal privacy-conscious platforms to use.</p>
+      </section>
+      <div style="background-color:#dd3f31">
+         <svg class="separator" xmlns="http://www.w3.org/2000/svg" width="100%" height="90" viewBox="0.1 0.3 200 19" preserveAspectRatio="none">
+            <g transform="translate(-0.21755166,-100.15454)">
+               <path style="fill:#0f0f10;" d="M 0.2688579,100.29477 H 200.98548 c 0,0 -99.37375,39.84098 -200.7166221,0 z" />
+            </g>
+         </svg>
+      </div>
+      <section class="red" style="padding-bottom:6rem;">
+         <div class="curve bottomcurve "></div>
+         <h2>Projects and Articles</h2>
+         <p>I am working on my projects all the time! Check below for a mix of my posts, projects, or Gists:</p>
+         <hr>
+         <h3>Projects</h3>
+         <div id="projects"></div>
+         <h3>Gists</h3>
+         <div id="gists"></div>
+         <h3>Articles</h3>
+         <div id="posts"></div>
+      </section>
+      <section class="footer small">
+         <p> Made with ❤️ + 🍵 by William Kenzie. All rights reserved.
+         <p>
+      </section>
+      <script>
+         fetch("https://api.github.com/users/willkenzie/repos")
+         .then(response => response.json())
+         .then(data => {
+           const projects = document.getElementById('projects');
+           for (project of data) {
+           projects.innerHTML += `<a class="name" href="${project.html_url}">${project.name}</a><p class="description">${project.description}<p>`
+           }
+         });
+         fetch("https://api.github.com/users/willkenzie/gists")
+         .then(response => response.json())
+         .then(data => {
+           const gists = document.getElementById('gists');
+           for (gist of data) {
+           gists.innerHTML += `<a class="name" href="${gist.html_url}">${gist.description}</a>`
+           }
+         });
+         fetch("https://dev.to/api/articles?username=willkenzie")
+         .then(response => response.json())
+         .then(data => {
+           const posts = document.getElementById('posts');
+           for (post of data) {
+           posts.innerHTML += `<a class="name" href="${post.url}">${post.title}</a><p class="description">${post.description}</p>`
+           }
+         });
+      </script>
+   </body>
+</html>
